@@ -58,8 +58,11 @@
     <label for="delay">Délai entre chaque tour (ms) :</label>
     <input type="number" name="delay" id="delay" value="200" min="10" max="5000" required>
 
-    <label for="maxAge">Âge maximum d'une cellule :</label>
-    <input type="number" name="maxAge" id="maxAge" value="6" min="1" max="100" required>
+    <label for="choix">Type de Rendu</label>
+    <select name="choix" id="choix">
+        <option value="croix">Croix</option>
+        <option value="age">Age</option>
+    </select>
 
     <button type="submit">Lancer le jeu</button>
 </form>

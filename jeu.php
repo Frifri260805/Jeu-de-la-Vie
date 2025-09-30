@@ -3,6 +3,7 @@
     $cols = $_GET['cols'];
     $delay = $_GET['delay'];
     $probability = $_GET['probability'];
+    $choix = $_GET['Choix'];
 ?>
 
 
@@ -83,12 +84,14 @@
         let round = 0;
         const defaultFill = <?= $probability?>;
 
+        const choix = "<?= $choix?>";
+
         let paused = false;
 
         const gridContainer = document.getElementById("grid");
 
         GenerateGrid(defaultFill);
-        RenderGrid();
+        RenderGrid(choix);
         gameLoop();
 
         function sleep(ms){
@@ -99,7 +102,7 @@
             while(true){
                 if(!paused){
                     NextStep();
-                    RenderGrid();
+                    RenderGrid(choix);
                 }
                 await sleep(delayMs);
             }
@@ -116,12 +119,20 @@
             }
         }
 
-        function RenderGrid(){
+        function RenderGrid(choix){
             let output = '';
             for(let r = 0; r < rows; r++){
                 let line = '|';
                 for(let c = 0; c < cols; c++){
-                    line += grid[r][c] ? 'X' : ' ';
+                    if(grid[r][c]){
+                        if(choix == "croix"){
+                            line+='X'
+                        }else{
+                            line+= age[r][c];
+                        }
+                    }else{
+                        line+= ' ';
+                    }
                     line += '|';
                 }
                 output += line + '\n';
@@ -178,7 +189,7 @@
             } else if(e.key.toLowerCase() === 'r'){
                 round = 0;
                 GenerateGrid(defaultFill);
-                RenderGrid();
+                RenderGrid(choix);
             }
         });
     </script>

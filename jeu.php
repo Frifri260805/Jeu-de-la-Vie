@@ -73,6 +73,8 @@
     <div class="main-content">
         <h2>Jeu de la Vie</h2>
         <pre id="grid"></pre>
+        <pre id="gridPause"></pre>
+        <pre id="gridInfo"></pre>
         <p>Touches: P = pause, R = reset</p>
     </div>
     <script>
@@ -88,8 +90,14 @@
 
         let paused = false;
 
-        const gridContainer = document.getElementById("grid");
+        let nbVie = 0;
+        let nbMort = 0;
 
+        const gridContainer = document.getElementById("grid");
+        const gridPaused = document.getElementById("gridPause");
+        const gridInfo = document.getElementById("gridInfo");
+
+        gridPaused.textContent = " ";
         GenerateGrid(defaultFill);
         RenderGrid(choix);
         gameLoop();
@@ -121,25 +129,44 @@
 
         function RenderGrid(choix){
             let output = '';
+            let outputInfo = '';
+            nbVie = 0;
+            nbMort = 0;
             for(let r = 0; r < rows; r++){
                 let line = '|';
                 for(let c = 0; c < cols; c++){
                     if(grid[r][c]){
-                        if(choix == "croix"){
-                            line+='X'
-                        }else{
-                            line+= age[r][c];
+                        nbVie++;
+                        let color;
+                        switch(age[r][c]){
+                            case 1: color = "lime"; break;       // vert clair
+                            case 2: color = "green"; break;      // vert foncé
+                            case 3: color = "blue"; break;
+                            case 4: color = "darkblue"; break;
+                            case 5: color = "red"; break;
+                            case 6: color = "darkred"; break;
+                            default: color = "yellow"; break;
                         }
-                    }else{
-                        line+= ' ';
+
+                        if(choix === "croix"){
+                            line += `<span style="color:${color}">X</span>`;
+                        } else {
+                            line += `<span style="color:${color}">${age[r][c]}</span>`;
+                        }
+                    } else {
+                        nbMort++;
+                        line += ' ';
                     }
                     line += '|';
                 }
-                output += line + '\n';
+                output += line + '<br>';
             }
             output += `Round: ${round}`;
-            gridContainer.textContent = output;
+            outputInfo += `Celulle en vie: ${nbVie}, Celulle mort: ${nbMort}`
+            gridContainer.innerHTML = output;
+            gridInfo.textContent = outputInfo;
         }
+
 
         function CountNeighbors(r, c){
             let count = 0;
@@ -186,6 +213,11 @@
         document.addEventListener("keydown", (e) => {
             if(e.key.toLowerCase() === 'p'){
                 paused = !paused;
+                if(paused){
+                    gridPaused.textContent = "En pause";
+                }else{
+                    gridPaused.textContent = " ";
+                }
             } else if(e.key.toLowerCase() === 'r'){
                 round = 0;
                 GenerateGrid(defaultFill);

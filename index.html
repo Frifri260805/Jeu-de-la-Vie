@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Menu des Jeux</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #222;
+        color: #0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .menu {
+        background-color: #111;
+        padding: 30px;
+        border-radius: 15px;
+        width: 400px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        background-color: #0f0;
+        color: #000;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    a:hover {
+        background-color: #0c0;
+    }
+</style>
+</head>
+<body>
+    <div class="menu">
+        <h1>🎮 Menu des Jeux</h1>
+        
+        <!-- Lien vers ton jeu de la vie -->
+        <a href="jeu-de-la-vie/jeu-de-la-vie.php">Jeu de la Vie</a>
+        
+        <!-- Exemple : futurs jeux -->
+        <a href="snake/snake.php">Snake</a>
+        <a href="tetris.php">Tetris</a>
+        <a href="pong.php">Pong</a>
+    </div>
+</body>
+</html>

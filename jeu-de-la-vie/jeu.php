@@ -69,7 +69,7 @@
 </style>
 </head>
 <body>
-    <a href='index.php'><button class="btn">Retour au menu</button></a>
+    <a href='jeu-de-la-vie.php'><button class="btn">Retour au menu</button></a>
     <div class="main-content">
         <h2>Jeu de la Vie</h2>
         <pre id="grid"></pre>
@@ -99,7 +99,6 @@
 
         gridPaused.textContent = " ";
         GenerateGrid(defaultFill);
-        RenderGrid(choix);
         gameLoop();
 
         function sleep(ms){
@@ -109,8 +108,8 @@
         async function gameLoop(){
             while(true){
                 if(!paused){
-                    NextStep();
                     RenderGrid(choix);
+                    NextStep();
                 }
                 await sleep(delayMs);
             }

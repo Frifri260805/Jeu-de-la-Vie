@@ -142,7 +142,7 @@
         }
 
         function StartGame() {
-            gameInterval = setInterval(Update, 120); // toutes les 200 ms
+            gameInterval = setInterval(Update, 200); // toutes les 200 ms
         }
 
         function Update() {

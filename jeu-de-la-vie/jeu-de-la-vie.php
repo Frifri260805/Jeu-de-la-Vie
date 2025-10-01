@@ -75,8 +75,8 @@
             <label for="cols">Nombre de colonnes :</label>
             <input type="number" name="cols" id="cols" value="30" min="5" max="100" required>
 
-            <label for="fill">Probabilité de cellule vivante au départ :</label>
-            <input type="number" name="fill" id="fill" value="0.25" min="0" max="1" step="0.01" required>
+            <label for="fill">Probabilité de cellule vivante au départ (%):</label>
+            <input type="number" name="fill" id="fill" value="25" min="0" max="100" step="1" required>
 
             <label for="delay">Délai entre chaque tour (ms) :</label>
             <input type="number" name="delay" id="delay" value="200" min="10" max="5000" required>

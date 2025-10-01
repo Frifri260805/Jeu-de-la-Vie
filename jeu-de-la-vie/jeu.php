@@ -84,7 +84,7 @@
         let age = [];
         const delayMs = <?= $delay?>;
         let round = 0;
-        const defaultFill = <?= $probability?>;
+        const defaultFill = <?= $probability?>/100;
 
         const choix = "<?= $choix?>";
 
